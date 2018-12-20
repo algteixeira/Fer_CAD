@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 # ANDRÉ LUIZ GONÇALVES TEIXEIRA && PEDRO THIAGO ROQUE
 # EXEMPLO DE ENTRADA: ABCD+!AB!CD+A!BC!D+ABC!D
 
@@ -77,3 +78,12 @@ for c in range (0, cont+1) :
 print(aux, entrada.count('+'))
 print("Grupo 0: {}\nGrupo 1: {}\nGrupo 2:{}\nGrupo 3: {}\nGrupo 4: {}\n".format(grupo0, grupo1, grupo2, grupo3, grupo4))   # PRINTA OS ELEMENTOS DOS GRUPOS
     
+#   //vai percorrer cada um dos 5 grupos de agrupados
+#     for(i=0;i<grupo0.size;i++){ // pega cada um do grupo0 e compara com todos os do grupo seguinte
+#         for(j=0;j<grupo1.size;j++){
+#             if(grupo0[i] for apenas um digito diferente de grupo1[j]){
+#                 salva em novo grupo0+1
+#                                 grupo1+2, grupo2+3, grupo3+4
+#             }
+#         }
+# }
