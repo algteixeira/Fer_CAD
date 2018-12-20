@@ -97,6 +97,7 @@ grupo34=[]
 def achaflips(modelo, palavra):
     i = 0 # Índice na palavra a ser testada
     n = 0 # Número de caracteres do modelo encontrados na palavra testada
+    traco='-'
     for letra in modelo:
         while i < len(palavra):
             if letra == palavra[i]:
@@ -108,12 +109,41 @@ def achaflips(modelo, palavra):
             palavra = ''.join(list1)
             #print(palavra)
             i += 1
+            break
+            
     if n == len(modelo):
-        return modelo
-    return palavra
+        return " "
+    if(palavra.count(traco)>0 and palavra.count(traco)< 2):
+        return palavra
+    return " "
 
-qqq = achaflips(grupo3[0],grupo4[0])
-print(qqq)
-    # for x in range (0, grupo0.size) :
-    #     if (grupo0[x]) :
-    #         grupo0.append(aux[c])
+#qqq = achaflips(grupo2[0],grupo3[0])
+#print(qqq)
+
+for x in range (0, len(grupo0)) : #grupo 01
+    for y in range (0, len(grupo1)) :
+        qqq = achaflips(grupo0[x],grupo1[y])
+        if(qqq != " "):
+            grupo01.append(qqq)
+            print(grupo01[x])
+
+for x in range (0, len(grupo1)) : #GRUPO 12
+    for y in range (0, len(grupo2)) :
+        qqq = achaflips(grupo1[x],grupo2[y])
+        if(qqq != " "):
+            grupo12.append(qqq)
+            print(grupo12[x])
+
+for x in range (0, len(grupo2)) :
+    for y in range (0, len(grupo3)) :
+        qqq = achaflips(grupo2[x],grupo3[y])
+        if(qqq != " "):
+            grupo23.append(qqq)
+            print(grupo23[x])
+
+for x in range (0, len(grupo3)) :
+    for y in range (0, len(grupo4)) :
+        qqq = achaflips(grupo3[x],grupo4[y])
+        if(qqq != " "):
+            grupo34.append(qqq)
+            print(grupo34[x])
