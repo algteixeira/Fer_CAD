@@ -42,6 +42,7 @@ grupo1=[]
 grupo2=[]     # cria listas para os diferentes grupos
 grupo3=[]
 grupo4=[]
+grupoOrg=[]
 print('A  B  C  D !A !B !C !D  F')  
 for l in range (0, 16) :
     for c in range (0,9):
@@ -62,7 +63,8 @@ for l in range (0, 16) :
 
 #aux=entrada.split('+')      # GERA UMA LISTA COM OS MINTERMOS DA EXPRESSÃO
 cont=entrada.count('+')         
-print(aux)        
+print(aux)  
+grupoOrg = aux      
 for c in range (0, cont+1) :
     if (aux[c].count('1') == 0) :
         grupo0.append(aux[c])
@@ -119,31 +121,93 @@ def achaflips(modelo, palavra):
 
 #qqq = achaflips(grupo2[0],grupo3[0])
 #print(qqq)
-
+grupoSimp=[]
 for x in range (0, len(grupo0)) : #grupo 01
     for y in range (0, len(grupo1)) :
         qqq = achaflips(grupo0[x],grupo1[y])
         if(qqq != " "):
             grupo01.append(qqq)
-            print(grupo01[x])
+            grupoSimp.append(qqq)
+            #print(grupo01[x])
 
 for x in range (0, len(grupo1)) : #GRUPO 12
     for y in range (0, len(grupo2)) :
         qqq = achaflips(grupo1[x],grupo2[y])
         if(qqq != " "):
             grupo12.append(qqq)
-            print(grupo12[x])
+            grupoSimp.append(qqq)
+            #print(grupo12[x])
 
 for x in range (0, len(grupo2)) :
     for y in range (0, len(grupo3)) :
         qqq = achaflips(grupo2[x],grupo3[y])
         if(qqq != " "):
             grupo23.append(qqq)
-            print(grupo23[x])
+            grupoSimp.append(qqq)
+            #print(grupo23[x])
 
 for x in range (0, len(grupo3)) :
     for y in range (0, len(grupo4)) :
         qqq = achaflips(grupo3[x],grupo4[y])
         if(qqq != " "):
             grupo34.append(qqq)
-            print(grupo34[x])
+            grupoSimp.append(qqq)
+            #print(grupo34[x])
+
+print("Grupo 01: {}\nGrupo 12: {}\nGrupo 23:{}\nGrupo 34: {}\n".format(grupo01, grupo12, grupo23, grupo34))   # PRINTA OS ELEMENTOS DOS GRUPOS
+
+
+print("Grupo org: {}".format(grupoOrg))
+print("Grupo Simp: {}".format(grupoSimp))
+grupoFinal=[]
+grupoFF=[]
+for x in range (0, len(grupoSimp)) :
+    for y in range (0, len(grupoOrg)) :
+        qqq = achaflips(grupoSimp[x],grupoOrg[y])
+        if(qqq != " "):
+            grupoFinal.append(qqq)
+
+grupoFF = sorted(set(grupoFinal))
+print("Grupo Final: {}".format(grupoFF))
+
+def transf(modelo):
+    qqq=""
+
+    if(modelo[0]== "1"):
+        qqq+=str("A")
+    elif(modelo[0]== "0"):
+         qqq+=str("!A")
+    elif(modelo[0]== "-"):
+         qqq+=str("")
+
+    if(modelo[1]== "1"):
+        qqq+=str("B")
+    elif(modelo[1]== "0"):
+         qqq+=str("!B")
+    elif(modelo[1]== "-"):
+         qqq+=str("")
+
+    if(modelo[2]== "1"):
+        qqq+=str("C")
+    elif(modelo[2]== "0"):
+         qqq+=str("!C")
+    elif(modelo[2]== "-"):
+         qqq+=str("")
+
+    if(modelo[3]== "1"):
+        qqq+=str("D")
+    elif(modelo[3]== "0"):
+         qqq+=str("!D")
+    elif(modelo[3]== "-"):
+         qqq+=str("")
+
+    return qqq
+
+treta=""
+
+treta += transf(grupoFF[0])
+for x in range (1, len(grupoFF)) :
+    treta += "+ " + transf(grupoFF[x])
+        #treta = table1[1][1]*1
+print(treta)
+        #str((table1[l][0]*1)
