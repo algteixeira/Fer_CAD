@@ -87,3 +87,33 @@ print("Grupo 0: {}\nGrupo 1: {}\nGrupo 2:{}\nGrupo 3: {}\nGrupo 4: {}\n".format(
 #             }
 #         }
 # }
+
+#COMPARAÇÃO DOS CONJUNTOS - TAL DA PARTE3
+grupo01=[]
+grupo12=[]
+grupo23=[]     # cria listas para os diferentes grupos
+grupo34=[]
+
+def achaflips(modelo, palavra):
+    i = 0 # Índice na palavra a ser testada
+    n = 0 # Número de caracteres do modelo encontrados na palavra testada
+    for letra in modelo:
+        while i < len(palavra):
+            if letra == palavra[i]:
+                i += 1
+                n += 1
+                break
+            list1 = list(palavra)
+            list1[i] = '-'
+            palavra = ''.join(list1)
+            #print(palavra)
+            i += 1
+    if n == len(modelo):
+        return modelo
+    return palavra
+
+qqq = achaflips(grupo3[0],grupo4[0])
+print(qqq)
+    # for x in range (0, grupo0.size) :
+    #     if (grupo0[x]) :
+    #         grupo0.append(aux[c])
